@@ -1,10 +1,11 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:latihan_fluter/constans.dart';
-import 'package:latihan_fluter/auth/setting.dart';
-import 'package:latihan_fluter/list_inquiry/list_inquiry.dart';
-import 'package:latihan_fluter/update_status/update_status.dart';
+import 'package:mobile_app_ppm/auth/setting.dart';
+import 'package:mobile_app_ppm/request_form/create_form_leave.dart';
+import 'package:mobile_app_ppm/constans.dart';
+import 'package:mobile_app_ppm/list_inquiry/history_request.dart';
+import 'package:mobile_app_ppm/payslip/my_payslip.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -15,13 +16,14 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Engineering App',
+      debugShowCheckedModeBanner: false,
+      title: 'PPM APP',
       home: Scaffold(
         appBar: AppBar(
           title: Text("Dashboard"),
-          backgroundColor: kPrimaryColor,
+          backgroundColor: Colors.red[400],
         ),
-        backgroundColor: kBackgroundColor,
+        backgroundColor: Colors.white,
         drawer: Drawer(
           child: ListView(
             children: <Widget>[
@@ -31,7 +33,7 @@ class _DashboardState extends State<Dashboard> {
                 decoration: BoxDecoration(
                   color: colorContainer,
                   image: DecorationImage(
-                    image: AssetImage("assets/images/logo2.png"),
+                    image: AssetImage("assets/images/logo3.png"),
                     fit: BoxFit.contain,
                     alignment: Alignment.bottomCenter,
                   ),
@@ -55,7 +57,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                 ),
-                leading: Text("Nama engineering",
+                leading: Text("Nama staff ppm",
                     style: TextStyle(color: kBackgroundColor)),
               ),
               ListTile(
@@ -76,7 +78,7 @@ class _DashboardState extends State<Dashboard> {
                     },
                   ));
                 },
-                title: Text("Inquiry List",
+                title: Text("History Request",
                     style: TextStyle(color: kBackgroundColor)),
                 leading: CircleAvatar(
                   child: Icon(
@@ -95,7 +97,7 @@ class _DashboardState extends State<Dashboard> {
                     },
                   ));
                 },
-                title: Text("Update Terbaru",
+                title: Text("My Payslip",
                     style: TextStyle(color: kBackgroundColor)),
                 leading: CircleAvatar(
                   child: Icon(
@@ -122,45 +124,51 @@ class _DashboardState extends State<Dashboard> {
           //button di tengah bawah
           children: <Widget>[
             Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/gear.jpg"),
-                  fit: BoxFit.cover,
-                  alignment: Alignment.bottomCenter,
-                ),
-              ),
+              decoration: BoxDecoration(),
             ),
             ListView(
               padding: EdgeInsets.all(20),
               children: <Widget>[
                 Text(
-                  "Hii, Nama Engineering",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  "Hii, Nama staf PPM",
+                  style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
-                Text(
-                  "Tampilan Laporan pekerjaanmu ",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                totalWobelumterjadwal(),
-                totalWosudahterjadwal(),
+
+                // totalWobelumterjadwal(),
+                // totalWosudahterjadwal(),
                 RaisedButton(
-                  onPressed: () {},
-                  color: Colors.blue,
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return FormRequest();
+                      },
+                    ));
+                  },
+                  color: Colors.greenAccent,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text("Create Internal Wo"),
+                      Text("Create New Request"),
                       Icon(Icons.arrow_forward)
                     ],
                   ),
                   elevation: 90,
                 ),
                 Text(
-                  "jadwal pekerjaan hari ini ",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  "Inquery Assigned To Tou ",
+                  style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
+                // contohwo(),
                 containerWohariini(),
-                iwO(),iwO()
+                containerWohariini(),
+                containerWohariini(),
+                containerWohariini(),
+                containerWohariini(),
+                containerWohariini(),
+                containerWohariini(),
+                containerWohariini(),
+                // iwO(),
+                // iwO()
               ],
             ),
           ],
@@ -170,28 +178,64 @@ class _DashboardState extends State<Dashboard> {
   }
 }
 
+// ListTile contohwo() {
+//   return ListTile(
+//     contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+//     title: Text("type request"),
+//     subtitle: Text("nama"),
+//     leading: CircleAvatar(),
+//     hoverColor: Colors.red,
+//     focusColor: Colors.red,
+//   );
+// }
+
 Card iwO() {
   return Card(
-      child: Column(
-    children: <Widget>[
-      Container(margin: EdgeInsets.only(left:10.0, right:10.0,bottom: 1.0),child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[Text("089809/890ao/90"),
-      Text("status pekerjaan")],)),
-      Container(margin: EdgeInsets.only(left:10.0, right:10.0,bottom: 10.0),child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[Text("engineering pompa"),
-      Image(
-                image: AssetImage("assets/icons/icon-atr-reschedule.png"))],)),
-      Container(margin: EdgeInsets.only(left:10.0, right:10.0),child: Row(children: <Widget>[
-      Icon(Icons.date_range),Text("12 des 2020"),Icon(Icons.person),Text("1207")],)),
-      Container(margin: EdgeInsets.only(left:10.0, right:10.0),child: Row(children: <Widget>[
-      Icon(Icons.home),Text("Orchard 2019")],)),
-    ],
-  ),);
+    child: Column(
+      children: <Widget>[
+        Container(
+            margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 1.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("089809/890ao/90"),
+                Text("status pekerjaan")
+              ],
+            )),
+        Container(
+            margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("engineering pompa"),
+                Image(image: AssetImage("assets/icons/icon-atr-reschedule.png"))
+              ],
+            )),
+        Container(
+            margin: EdgeInsets.only(left: 10.0, right: 10.0),
+            child: Row(
+              children: <Widget>[
+                Icon(Icons.date_range),
+                Text("12 des 2020"),
+                Icon(Icons.person),
+                Text("1207")
+              ],
+            )),
+        Container(
+            margin: EdgeInsets.only(left: 10.0, right: 10.0),
+            child: Row(
+              children: <Widget>[Icon(Icons.home), Text("Orchard 2019")],
+            )),
+      ],
+    ),
+  );
 }
 
 Container containerWohariini() {
   return Container(
-    margin: EdgeInsets.all(10),
+    margin: EdgeInsets.all(5),
     decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(5),
         shape: BoxShape.rectangle,
         color: colorContainer),
     child: Column(
@@ -201,20 +245,31 @@ Container containerWohariini() {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Flexible(
-                flex: 2,
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(),
-                  child: Text(
-                    "No WO",
-                    style: TextStyle(color: warnaAksara),
-                  ),
-                )),
-            Flexible(
               flex: 1,
-              child: Text(
-                "Status Pekerjaan",
-                style: TextStyle(color: warnaAksara),
+              child: Container(
+                alignment: Alignment.center,
+                height: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  color: Colors.transparent,
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        "Nama Peminta ",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ],
@@ -223,23 +278,56 @@ Container containerWohariini() {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Flexible(
-                flex: 2,
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(),
-                  child: Text(
-                    "Kategory wo - type wo",
-                    style: TextStyle(color: warnaAksara),
-                  ),
-                )),
-            Flexible(
               flex: 1,
-              child: Image(
-                image: AssetImage("assets/icons/icon-atr-reschedule.png"),
+              child: Container(
+                alignment: Alignment.center,
+                height: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  color: Colors.transparent,
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      child: Icon(
+                        Icons.app_registration,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        "Type Request ",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ],
         ),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //   children: <Widget>[
+        //     // Flexible(
+        //     //     flex: 2,
+        //     //     child: Container(
+        //     //       alignment: Alignment.centerLeft,
+        //     //       margin: EdgeInsets.only(),
+        //     //       child: Text(
+        //     //         "Kategory wo - type wo",
+        //     //         style: TextStyle(color: warnaAksara),
+        //     //       ),
+        //     //     )),
+        //     // Flexible(
+        //     //   flex: 1,
+        //     //   child: Image(
+        //     //     image: AssetImage("assets/icons/icon-atr-reschedule.png"),
+        //     //   ),
+        //     // ),
+        //   ],
+        // ),
         Column(
           children: <Widget>[
             Row(
@@ -260,12 +348,12 @@ Container containerWohariini() {
                           margin: EdgeInsets.only(right: 10),
                           child: Icon(
                             Icons.calendar_today,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         Text(
-                          "created_at",
-                          style: TextStyle(color: warnaAksara),
+                          "start date",
+                          style: TextStyle(color: Colors.black),
                         )
                       ],
                     ),
@@ -283,12 +371,12 @@ Container containerWohariini() {
                       child: Row(
                         children: <Widget>[
                           Icon(
-                            Icons.person,
-                            color: Colors.white,
+                            Icons.calendar_today,
+                            color: Colors.black,
                           ),
                           Text(
-                            "nama penghuni",
-                            style: TextStyle(color: warnaAksara),
+                            "end date",
+                            style: TextStyle(color: Colors.black),
                           ),
                         ],
                       )),
@@ -312,14 +400,14 @@ Container containerWohariini() {
                         Container(
                           margin: EdgeInsets.only(right: 10),
                           child: Icon(
-                            Icons.home,
-                            color: Colors.white,
+                            Icons.book,
+                            color: Colors.black,
                           ),
                         ),
                         Container(
                           child: Text(
-                            "Tower dan unit",
-                            style: TextStyle(color: warnaAksara),
+                            "Reason ",
+                            style: TextStyle(color: Colors.black),
                           ),
                         )
                       ],

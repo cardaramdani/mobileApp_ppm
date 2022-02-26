@@ -1,8 +1,10 @@
-import 'package:latihan_fluter/dashboard/dashboard.dart';
+import 'dart:ui';
+
+import 'package:mobile_app_ppm/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:latihan_fluter/auth/register.dart';
-import 'package:latihan_fluter/constans.dart';
+import 'package:mobile_app_ppm/auth/register.dart';
+import 'package:mobile_app_ppm/constans.dart';
 
 class ChangePasswordPage extends StatelessWidget {
   @override
@@ -15,17 +17,17 @@ class ChangePasswordPage extends StatelessWidget {
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/gear.jpg"),
-                  fit: BoxFit.cover,
-                  alignment: Alignment.bottomCenter,
-                ),
-              ),
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/logo-ppm.png"),
+                    fit: BoxFit.cover,
+                    alignment: Alignment.bottomCenter,
+                  ),
+                  color: Colors.black),
             ),
             ListView(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(top: 40, bottom: 40),
+                  padding: const EdgeInsets.only(top: 40, bottom: 40, left: 30),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
@@ -33,20 +35,24 @@ class ChangePasswordPage extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 16),
                         child: Icon(
                           Icons.alternate_email,
-                          color: Colors.white,
+                          color: Colors.blueGrey[900],
                         ),
                       ),
                       Expanded(
                           child: Text(
                         "emailanda@gm.com",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(
+                            color: Colors.blueGrey[900], fontSize: 20),
                       )),
                     ],
                   ),
                 ),
                 Text(
                   "Old Password",
-                  style: TextStyle(color: Colors.white, fontSize:20),
+                  style: TextStyle(
+                      color: Colors.blueGrey[900],
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 40),
@@ -55,9 +61,11 @@ class ChangePasswordPage extends StatelessWidget {
                     children: <Widget>[
                       Expanded(
                         child: TextField(
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                              color: Colors.blueGrey[900],
+                              fontWeight: FontWeight.w900),
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.blueAccent),
+                            hintStyle: TextStyle(color: Colors.black),
                             hintText: "Username/Email",
                             focusColor: Colors.red,
                           ),
@@ -68,7 +76,10 @@ class ChangePasswordPage extends StatelessWidget {
                 ),
                 Text(
                   "New Password",
-                  style: TextStyle(color: Colors.white, fontSize:20),
+                  style: TextStyle(
+                      color: Colors.blueGrey[900],
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 40),
@@ -77,9 +88,9 @@ class ChangePasswordPage extends StatelessWidget {
                     children: <Widget>[
                       Expanded(
                         child: TextField(
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.blueGrey[900]),
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.blueAccent),
+                            hintStyle: TextStyle(color: Colors.black),
                             hintText: "Username/Email",
                             focusColor: Colors.red,
                           ),
@@ -90,7 +101,10 @@ class ChangePasswordPage extends StatelessWidget {
                 ),
                 Text(
                   "Confirm Password",
-                  style: TextStyle(color: Colors.white, fontSize:20),
+                  style: TextStyle(
+                      color: Colors.blueGrey[900],
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 40),
@@ -101,7 +115,7 @@ class ChangePasswordPage extends StatelessWidget {
                         child: TextField(
                           style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.blueAccent),
+                            hintStyle: TextStyle(color: Colors.black),
                             hintText: "Username/Email",
                             focusColor: Colors.red,
                           ),
@@ -131,12 +145,12 @@ class ChangePasswordPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             shape: BoxShape.rectangle,
-                            color: colorContainer,
+                            color: Colors.red,
                           ),
                           child: Text(
                             "SAVE",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.blueAccent[900],
                                 fontWeight: FontWeight.w900,
                                 fontSize: 20),
                           ),

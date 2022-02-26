@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:latihan_fluter/auth/loginpage.dart';
-import 'package:latihan_fluter/constans.dart';
+import 'package:mobile_app_ppm/auth/loginpage.dart';
+import 'package:mobile_app_ppm/constans.dart';
 // import 'package:latihan_fluter/dashboard/dashboard.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -25,19 +25,20 @@ class RegisterPage extends StatelessWidget {
             ),
             ListView(
               children: <Widget>[
-        Container(width: 50,
-          height: 200,
-          decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/logo1.png"),
-                  fit: BoxFit.contain,
-                  alignment: Alignment.bottomCenter,
+                Container(
+                  width: 50,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/logo1.png"),
+                      fit: BoxFit.contain,
+                      alignment: Alignment.bottomCenter,
+                    ),
+                  ),
                 ),
-              ),
-        ),
-               
+
                 Padding(
-                  padding: const EdgeInsets.only( bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 10),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
@@ -55,7 +56,6 @@ class RegisterPage extends StatelessWidget {
                             hintStyle: TextStyle(color: Colors.blueAccent),
                             hintText: "Email",
                             focusColor: Colors.red,
-                            
                           ),
                         ),
                       )
@@ -81,7 +81,6 @@ class RegisterPage extends StatelessWidget {
                             hintStyle: TextStyle(color: Colors.blueAccent),
                             hintText: "Username",
                             focusColor: Colors.red,
-                            
                           ),
                         ),
                       )
@@ -107,7 +106,6 @@ class RegisterPage extends StatelessWidget {
                             hintStyle: TextStyle(color: Colors.blueAccent),
                             hintText: "Phone Number",
                             focusColor: Colors.red,
-                            
                           ),
                         ),
                       )
@@ -133,7 +131,6 @@ class RegisterPage extends StatelessWidget {
                             hintStyle: TextStyle(color: Colors.blueAccent),
                             hintText: "Password",
                             focusColor: Colors.red,
-                            
                           ),
                         ),
                       )
@@ -159,16 +156,13 @@ class RegisterPage extends StatelessWidget {
                             hintStyle: TextStyle(color: Colors.blueAccent),
                             hintText: "Confirm Password",
                             focusColor: Colors.red,
-                            
                           ),
                         ),
                       )
                     ],
                   ),
                 ),
-                
-                
-                
+
                 Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 30),
@@ -194,7 +188,10 @@ class RegisterPage extends StatelessWidget {
                           ),
                           child: Text(
                             "Register",
-                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.w900, fontSize: 20),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900,
+                                fontSize: 20),
                           ),
                         ),
                       ),
@@ -208,7 +205,6 @@ class RegisterPage extends StatelessWidget {
                 //     child: Column(
                 //       children: <Widget>[
 
-                        
                 //       ],
                 //     ),
                 //   ),

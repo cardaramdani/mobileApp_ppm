@@ -1,13 +1,11 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:latihan_fluter/constans.dart';
-import 'package:latihan_fluter/dashboard/dashboard.dart';
-import 'package:latihan_fluter/auth/change_pass.dart';
-import 'package:latihan_fluter/auth/loginpage.dart';
-import 'package:latihan_fluter/list_inquiry/list_inquiry.dart';
-import 'package:latihan_fluter/update_status/update_status.dart';
+import 'package:mobile_app_ppm/constans.dart';
+import 'package:mobile_app_ppm/dashboard/dashboard.dart';
+import 'package:mobile_app_ppm/auth/change_pass.dart';
+import 'package:mobile_app_ppm/auth/loginpage.dart';
+import 'package:mobile_app_ppm/list_inquiry/history_request.dart';
+import 'package:mobile_app_ppm/payslip/my_payslip.dart';
 
 class SettingPage extends StatefulWidget {
   @override
@@ -22,9 +20,9 @@ class _SettingPageState extends State<SettingPage> {
         home: Scaffold(
             appBar: AppBar(
               title: Text("SETTING"),
-              backgroundColor: kPrimaryColor,
+              backgroundColor: Colors.red[400],
             ),
-            backgroundColor: kBackgroundColor,
+            backgroundColor: Colors.white,
             drawer: Drawer(
               child: ListView(
                 children: <Widget>[
@@ -92,20 +90,22 @@ class _SettingPageState extends State<SettingPage> {
                   ),
                   ListTile(
                     tileColor: colorContainer,
-
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return UpdateStatusPage();
-                      },
-                    ));
-                  },
-                  title: Text("Update Terbaru",
-                      style: TextStyle(color: kBackgroundColor)),
-                  leading: CircleAvatar(
-                    child: Icon(Icons.work_sharp, color: kBackgroundColor, ),
-                    backgroundColor: Colors.transparent,
-                  ),
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return UpdateStatusPage();
+                        },
+                      ));
+                    },
+                    title: Text("Update Terbaru",
+                        style: TextStyle(color: kBackgroundColor)),
+                    leading: CircleAvatar(
+                      child: Icon(
+                        Icons.work_sharp,
+                        color: kBackgroundColor,
+                      ),
+                      backgroundColor: Colors.transparent,
+                    ),
                   ),
                   ListTile(tileColor: colorContainer),
                   ListTile(tileColor: colorContainer),
@@ -119,11 +119,10 @@ class _SettingPageState extends State<SettingPage> {
               //listview
               //button di tengah bawah
               children: <Widget>[
-                
                 Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/images/gear.jpg"),
+                      image: AssetImage("assets/images/logo-ppm.png"),
                       fit: BoxFit.cover,
                       alignment: Alignment.bottomCenter,
                     ),
@@ -134,27 +133,289 @@ class _SettingPageState extends State<SettingPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        ListTile(
-                          title: Text("Namana User",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 20)),
-                        ),
-                        ListTile(
-                          title: Text("No telpon",
-                              style: TextStyle(color: Colors.white)),
-                          leading: CircleAvatar(
-                            child: Icon(Icons.phone, color: Colors.white),
-                            backgroundColor: kPrimaryColor,
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("First Name :",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.directions_car_filled_sharp,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
                           ),
                         ),
-                        ListTile(
-                          title: Text("Alamat email",
-                              style: TextStyle(color: Colors.white)),
-                          leading: CircleAvatar(
-                            child: Icon(Icons.email, color: Colors.white),
-                            backgroundColor: kPrimaryColor,
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Last Name",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Phone Number",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("alamat email",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Departement",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("position",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("nik",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Date Of Birthday :",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Status :",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("No KTP :",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Bpjs kes",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Bpjs ket",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Nppwp :",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Join Date :",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Edukasi",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Agama :",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Jenis Kelamin",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("Negara :",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white60,
+                          child: ListTile(
+                            title: Text("alamat :",
+                                style: TextStyle(
+                                    color: Colors.blueGrey[900],
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 15)),
+                            // leading: CircleAvatar(
+                            //   child: Icon(Icons.phone,
+                            //       color: Colors.blueGrey[900]),
+                            //   backgroundColor: Colors.transparent,
+                            // ),
                           ),
                         ),
                         Row(
@@ -176,7 +437,7 @@ class _SettingPageState extends State<SettingPage> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(20),
-                                          color: colorContainer,
+                                          color: Colors.red,
                                         ),
                                         height: 50,
                                         margin: EdgeInsets.only(top: 20),
@@ -191,7 +452,7 @@ class _SettingPageState extends State<SettingPage> {
                                                 Container(
                                                   child: Icon(
                                                     Icons.vpn_key,
-                                                    color: Colors.white,
+                                                    color: Colors.blueGrey[900],
                                                   ),
                                                 ),
                                               ],
@@ -199,12 +460,12 @@ class _SettingPageState extends State<SettingPage> {
                                             Text(
                                               "Ganti password",
                                               style: TextStyle(
-                                                  color: Colors.white,
+                                                  color: Colors.blueGrey[900],
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.w900),
                                             ),
                                             Icon(Icons.keyboard_arrow_right,
-                                                color: Colors.white)
+                                                color: Colors.blueGrey[900])
                                           ],
                                         ),
                                       ),
@@ -232,7 +493,7 @@ class _SettingPageState extends State<SettingPage> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(20),
-                                          color: colorContainer,
+                                          color: Colors.red,
                                         ),
                                         height: 50,
                                         margin: EdgeInsets.only(top: 20),
@@ -247,7 +508,7 @@ class _SettingPageState extends State<SettingPage> {
                                                 Container(
                                                   child: Icon(
                                                     Icons.logout,
-                                                    color: Colors.white,
+                                                    color: Colors.blueGrey[900],
                                                   ),
                                                 ),
                                               ],
@@ -255,12 +516,12 @@ class _SettingPageState extends State<SettingPage> {
                                             Text(
                                               "Logout          ",
                                               style: TextStyle(
-                                                  color: Colors.white,
+                                                  color: Colors.blueGrey[900],
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.w900),
                                             ),
                                             Icon(Icons.keyboard_arrow_right,
-                                                color: Colors.white)
+                                                color: Colors.blueGrey[900])
                                           ],
                                         ),
                                       ),
