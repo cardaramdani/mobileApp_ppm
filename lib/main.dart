@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app_ppm/constans.dart';
-import 'package:mobile_app_ppm/auth/loginpage.dart';
+import 'package:flutter/services.dart';
+import 'package:mobileApp_ppm/constans.dart';
+import 'package:mobileApp_ppm/views/auth/change_pass.dart';
+import 'package:mobileApp_ppm/views/auth/loginpage.dart';
+import 'package:mobileApp_ppm/views/auth/loginpage.dart';
+import 'package:mobileApp_ppm/views/auth/setting.dart';
+import 'package:mobileApp_ppm/views/dashboard/dashboard.dart';
+import 'package:mobileApp_ppm/views/list_inquiry/history_request.dart';
+import 'package:mobileApp_ppm/views/payslip/my_payslip.dart';
+import 'package:mobileApp_ppm/views/request_form/create_form_leave.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(MyApp());
 }
 
@@ -30,7 +42,17 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: LoginPage(),
+      initialRoute: 'login',
+      routes: {
+        'login': (context) => SigninPage(),
+        'leave/add': (context) => FormRequest(),
+        // 'leave/view': (context) => SigninPage(),
+        'request/index': (context) => ListInquiry(),
+        'mypayslip': (context) => UpdateStatusPage(),
+        'setting': (context) => SettingPage(),
+        'dashboard': (context) => Dashboard(),
+        'changepassword': (context) => ChangePasswordPage(),
+      },
     );
   }
 }

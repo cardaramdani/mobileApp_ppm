@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app_ppm/constans.dart';
-import 'package:mobile_app_ppm/auth/setting.dart';
-import 'package:mobile_app_ppm/dashboard/dashboard.dart';
-import 'package:mobile_app_ppm/payslip/my_payslip.dart';
+import 'package:mobileApp_ppm/constans.dart';
+import 'package:mobileApp_ppm/views/auth/setting.dart';
+import 'package:mobileApp_ppm/views/dashboard/dashboard.dart';
+import 'package:mobileApp_ppm/views/payslip/my_payslip.dart';
 
 class ListInquiry extends StatefulWidget {
   ListInquiry({Key key}) : super(key: key);
@@ -14,124 +14,118 @@ class ListInquiry extends StatefulWidget {
 class _ListInquiryState extends State<ListInquiry> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Engineering App',
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text("History Request"),
-            backgroundColor: Colors.red[400],
-          ),
-          backgroundColor: Colors.white,
-          drawer: Drawer(
-            child: ListView(
-              children: <Widget>[
-                Container(
-                  width: 50,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: colorContainer,
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/logo-ppm.png"),
-                      fit: BoxFit.contain,
-                      alignment: Alignment.bottomCenter,
-                    ),
-                  ),
+    final mediaQueryheight = MediaQuery.of(context).size.height;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("History Request"),
+        backgroundColor: Colors.red[400],
+      ),
+      backgroundColor: Colors.white,
+      drawer: Drawer(
+        backgroundColor: Colors.white,
+        child: Column(
+          children: [
+            Container(
+              height: mediaQueryheight * 0.3,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                image: DecorationImage(
+                  image: AssetImage("assets/images/logo3.png"),
+                  fit: BoxFit.contain,
+                  alignment: Alignment.bottomCenter,
                 ),
-                ListTile(
-                  tileColor: colorContainer,
-                  title: Container(
-                    alignment: Alignment.centerRight,
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return SettingPage();
-                          },
-                        ));
-                      },
-                      child: Icon(
-                        Icons.settings,
-                        color: kBackgroundColor,
-                      ),
-                    ),
-                  ),
-                  leading: Text("Nama staff",
-                      style: TextStyle(color: kBackgroundColor)),
-                ),
-                ListTile(
-                  tileColor: colorContainer,
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return Dashboard();
-                      },
-                    ));
-                  },
-                  title:
-                      Text("Home", style: TextStyle(color: kBackgroundColor)),
-                  leading: CircleAvatar(
-                    child: Icon(Icons.home, color: kBackgroundColor),
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-                ListTile(
-                  tileColor: colorContainer,
-                  onTap: () {},
-                  title: Text("History Request",
-                      style: TextStyle(color: kBackgroundColor)),
-                  leading: CircleAvatar(
-                    child: Icon(
-                      Icons.menu_book,
-                      color: kBackgroundColor,
-                    ),
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-                ListTile(
-                  tileColor: colorContainer,
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return UpdateStatusPage();
-                      },
-                    ));
-                  },
-                  title: Text("My Payslip",
-                      style: TextStyle(color: kBackgroundColor)),
-                  leading: CircleAvatar(
-                    child: Icon(
-                      Icons.work_sharp,
-                      color: kBackgroundColor,
-                    ),
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-                ListTile(tileColor: colorContainer),
-                ListTile(tileColor: colorContainer),
-                ListTile(tileColor: colorContainer),
-                ListTile(tileColor: colorContainer),
-              ],
+              ),
             ),
+            ListTile(
+              tileColor: Colors.white,
+              title: Container(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(
+                      builder: (context) {
+                        return SettingPage();
+                      },
+                    ));
+                  },
+                  child: Icon(
+                    Icons.settings,
+                    color: kBackgroundColor,
+                  ),
+                ),
+              ),
+              leading: Text("Nama staff ppm",
+                  style: TextStyle(color: kBackgroundColor)),
+            ),
+            ListTile(
+              tileColor: Colors.white,
+              onTap: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(
+                  builder: (context) {
+                    return Dashboard();
+                  },
+                ));
+              },
+              title: Text("Home", style: TextStyle(color: kBackgroundColor)),
+              leading: CircleAvatar(
+                child: Icon(Icons.home, color: kBackgroundColor),
+                backgroundColor: Colors.transparent,
+              ),
+            ),
+            ListTile(
+              tileColor: Colors.white,
+              onTap: () {},
+              title: Text("History Request",
+                  style: TextStyle(color: kBackgroundColor)),
+              leading: CircleAvatar(
+                child: Icon(
+                  Icons.menu_book,
+                  color: kBackgroundColor,
+                ),
+                backgroundColor: Colors.transparent,
+              ),
+            ),
+            ListTile(
+              tileColor: Colors.white,
+              onTap: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(
+                  builder: (context) {
+                    return UpdateStatusPage();
+                  },
+                ));
+              },
+              title:
+                  Text("My Payslip", style: TextStyle(color: kBackgroundColor)),
+              leading: CircleAvatar(
+                child: Icon(
+                  Icons.work_sharp,
+                  color: kBackgroundColor,
+                ),
+                backgroundColor: Colors.transparent,
+              ),
+            ),
+          ],
+        ),
+      ),
+      //isi dalam body
+      body: Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(),
           ),
-          //isi dalam body
-          body: Stack(
+          ListView(
             children: <Widget>[
-              Container(
-                decoration: BoxDecoration(),
-              ),
-              ListView(
-                children: <Widget>[
-                  containerWo(),
-                  containerWo(),
-                  containerWo(),
-                  containerWo(),
-                  containerWo(),
-                  containerWo(),
-                ],
-              ),
+              containerWo(),
+              containerWo(),
+              containerWo(),
+              containerWo(),
+              containerWo(),
+              containerWo(),
             ],
-          )),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app_ppm/constans.dart';
-import 'package:mobile_app_ppm/auth/setting.dart';
-import 'package:mobile_app_ppm/list_inquiry/history_request.dart';
+import 'package:mobileApp_ppm/constans.dart';
+import 'package:mobileApp_ppm/views/auth/setting.dart';
+import 'package:mobileApp_ppm/views/list_inquiry/history_request.dart';
 
 class NavbarPage extends StatelessWidget {
   const NavbarPage({

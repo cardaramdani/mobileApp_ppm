@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app_ppm/constans.dart';
-import 'package:mobile_app_ppm/auth/setting.dart';
-import 'package:mobile_app_ppm/dashboard/dashboard.dart';
-import 'package:mobile_app_ppm/list_inquiry/history_request.dart';
+import 'package:mobileApp_ppm/constans.dart';
+import 'package:mobileApp_ppm/views/auth/setting.dart';
+import 'package:mobileApp_ppm/views/dashboard/dashboard.dart';
+import 'package:mobileApp_ppm/views/list_inquiry/history_request.dart';
 
 class UpdateStatusPage extends StatefulWidget {
   UpdateStatusPage({Key key}) : super(key: key);
@@ -14,6 +14,8 @@ class UpdateStatusPage extends StatefulWidget {
 class _UpdateStatusPageState extends State<UpdateStatusPage> {
   @override
   Widget build(BuildContext context) {
+    final mediaQueryheight = MediaQuery.of(context).size.height;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Engineering App',
@@ -22,29 +24,29 @@ class _UpdateStatusPageState extends State<UpdateStatusPage> {
             title: Text("My Payslip"),
             backgroundColor: Colors.red[400],
           ),
-          backgroundColor: kBackgroundColor,
+          backgroundColor: Colors.white,
           drawer: Drawer(
-            child: ListView(
-              children: <Widget>[
+            backgroundColor: Colors.white,
+            child: Column(
+              children: [
                 Container(
-                  width: 50,
-                  height: 200,
+                  height: mediaQueryheight * 0.3,
                   decoration: BoxDecoration(
-                    color: colorContainer,
+                    color: Colors.white,
                     image: DecorationImage(
-                      image: AssetImage("assets/images/logo-ppm.png"),
+                      image: AssetImage("assets/images/logo3.png"),
                       fit: BoxFit.contain,
                       alignment: Alignment.bottomCenter,
                     ),
                   ),
                 ),
                 ListTile(
-                  tileColor: colorContainer,
+                  tileColor: Colors.white,
                   title: Container(
                     alignment: Alignment.centerRight,
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(
+                        Navigator.pushReplacement(context, MaterialPageRoute(
                           builder: (context) {
                             return SettingPage();
                           },
@@ -56,13 +58,13 @@ class _UpdateStatusPageState extends State<UpdateStatusPage> {
                       ),
                     ),
                   ),
-                  leading: Text("Nama engineering",
+                  leading: Text("Nama staff ppm",
                       style: TextStyle(color: kBackgroundColor)),
                 ),
                 ListTile(
-                  tileColor: colorContainer,
+                  tileColor: Colors.white,
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
+                    Navigator.pushReplacement(context, MaterialPageRoute(
                       builder: (context) {
                         return Dashboard();
                       },
@@ -76,9 +78,9 @@ class _UpdateStatusPageState extends State<UpdateStatusPage> {
                   ),
                 ),
                 ListTile(
-                  tileColor: colorContainer,
+                  tileColor: Colors.white,
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
+                    Navigator.pushReplacement(context, MaterialPageRoute(
                       builder: (context) {
                         return ListInquiry();
                       },
@@ -95,7 +97,7 @@ class _UpdateStatusPageState extends State<UpdateStatusPage> {
                   ),
                 ),
                 ListTile(
-                  tileColor: colorContainer,
+                  tileColor: Colors.white,
                   onTap: () {},
                   title: Text("My Payslip",
                       style: TextStyle(color: kBackgroundColor)),
@@ -107,10 +109,6 @@ class _UpdateStatusPageState extends State<UpdateStatusPage> {
                     backgroundColor: Colors.transparent,
                   ),
                 ),
-                ListTile(tileColor: colorContainer),
-                ListTile(tileColor: colorContainer),
-                ListTile(tileColor: colorContainer),
-                ListTile(tileColor: colorContainer),
               ],
             ),
           ),
@@ -122,6 +120,10 @@ class _UpdateStatusPageState extends State<UpdateStatusPage> {
               ),
               ListView(
                 children: <Widget>[
+                  containerWo(),
+                  containerWo(),
+                  containerWo(),
+                  containerWo(),
                   containerWo(),
                   containerWo(),
                   containerWo(),

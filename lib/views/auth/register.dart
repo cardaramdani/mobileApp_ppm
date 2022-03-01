@@ -1,59 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app_ppm/dashboard/dashboard.dart';
-import 'package:mobile_app_ppm/constans.dart';
-import 'dart:async';
-// import 'package:mobile_app_ppm/dashboard/dashboard.dart';
+import 'package:mobileApp_ppm/views/auth/loginpage.dart';
+import 'package:mobileApp_ppm/constans.dart';
+// import 'package:latihan_fluter/dashboard/dashboard.dart';
 
-class FormRequest extends StatelessWidget {
-  const FormRequest({Key key}) : super(key: key);
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
         // appBar: buildAppBar(),
-        title: 'PPM',
+        title: 'EngineeringApp',
         home: Scaffold(
             body: Stack(
           children: <Widget>[
             Container(
-              decoration: BoxDecoration(),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/gear.jpg"),
+                  fit: BoxFit.cover,
+                  alignment: Alignment.bottomCenter,
+                ),
+              ),
             ),
             ListView(
               children: <Widget>[
                 Container(
                   width: 50,
-                  height: 100,
+                  height: 200,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/images/logo-ppm.png"),
+                      image: AssetImage("assets/images/logo1.png"),
                       fit: BoxFit.contain,
                       alignment: Alignment.bottomCenter,
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(right: 16),
-                        child: Icon(
-                          Icons.app_registration,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Expanded(
-                        child: TextField(
-                          style: TextStyle(color: Colors.black),
-                          decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.black),
-                            hintText: "type ijin",
-                            focusColor: Colors.red,
-                          ),
-                        ),
-                      )
-                    ],
                   ),
                 ),
 
@@ -65,16 +45,41 @@ class FormRequest extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 16),
                         child: Icon(
+                          Icons.alternate_email,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Expanded(
+                        child: TextField(
+                          style: TextStyle(color: Colors.white),
+                          decoration: InputDecoration(
+                            hintStyle: TextStyle(color: Colors.blueAccent),
+                            hintText: "Email",
+                            focusColor: Colors.red,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(right: 16),
+                        child: Icon(
                           Icons.person,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                       Expanded(
                         child: TextField(
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.black),
-                            hintText: "Nama pengganti",
+                            hintStyle: TextStyle(color: Colors.blueAccent),
+                            hintText: "Username",
                             focusColor: Colors.red,
                           ),
                         ),
@@ -90,16 +95,16 @@ class FormRequest extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 16),
                         child: Icon(
-                          Icons.calendar_today,
-                          color: Colors.black,
+                          Icons.phone,
+                          color: Colors.white,
                         ),
                       ),
                       Expanded(
                         child: TextField(
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.black),
-                            hintText: "start date",
+                            hintStyle: TextStyle(color: Colors.blueAccent),
+                            hintText: "Phone Number",
                             focusColor: Colors.red,
                           ),
                         ),
@@ -115,16 +120,16 @@ class FormRequest extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 16),
                         child: Icon(
-                          Icons.calendar_today,
-                          color: Colors.black,
+                          Icons.vpn_key,
+                          color: Colors.white,
                         ),
                       ),
                       Expanded(
                         child: TextField(
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.black),
-                            hintText: "end date",
+                            hintStyle: TextStyle(color: Colors.blueAccent),
+                            hintText: "Password",
                             focusColor: Colors.red,
                           ),
                         ),
@@ -132,25 +137,24 @@ class FormRequest extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  padding: const EdgeInsets.only(top: 10, bottom: 20),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(right: 16),
                         child: Icon(
-                          Icons.note_add,
-                          color: Colors.black,
+                          Icons.vpn_key,
+                          color: Colors.white,
                         ),
                       ),
                       Expanded(
                         child: TextField(
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
-                            hintStyle: TextStyle(color: Colors.black),
-                            hintText: "Reason",
+                            hintStyle: TextStyle(color: Colors.blueAccent),
+                            hintText: "Confirm Password",
                             focusColor: Colors.red,
                           ),
                         ),
@@ -161,7 +165,7 @@ class FormRequest extends StatelessWidget {
 
                 Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(bottom: 30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
@@ -169,22 +173,21 @@ class FormRequest extends StatelessWidget {
                         onTap: () {
                           Navigator.pushReplacement(context, MaterialPageRoute(
                             builder: (context) {
-                              return Dashboard();
+                              return SigninPage();
                             },
                           ));
                         },
                         child: Container(
-                          width: 250,
-                          height: 50,
+                          width: 320,
                           alignment: Alignment.center,
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(23),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(20),
                             shape: BoxShape.rectangle,
-                            color: Colors.red,
+                            color: colorContainer,
                           ),
                           child: Text(
-                            "Submit",
+                            "Register",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w900,
