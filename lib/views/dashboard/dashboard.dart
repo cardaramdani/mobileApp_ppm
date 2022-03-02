@@ -152,6 +152,11 @@ class _DashboardState extends State<Dashboard> {
                 },
                 subtitle: containerFormrequest(),
               ),
+
+              iwO(),
+              iwO(),
+              iwO(),
+              iwO(),
             ],
           ),
         ],
@@ -170,54 +175,168 @@ class _DashboardState extends State<Dashboard> {
 //     focusColor: Colors.red,
 //   );
 // }
-GridView requestFrom() {
-  return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-      ),
-      itemBuilder: (context, index) {
-        return;
-      },
-      itemCount: 2);
-}
 
 Card iwO() {
   return Card(
+    color: colorContainer,
     child: Column(
       children: <Widget>[
-        Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 1.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Flexible(
+              flex: 1,
+              child: Container(
+                alignment: Alignment.center,
+                height: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  color: Colors.transparent,
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        "Nama Peminta ",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Flexible(
+              flex: 1,
+              child: Container(
+                alignment: Alignment.center,
+                height: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  color: Colors.transparent,
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(right: 10),
+                      child: Icon(
+                        Icons.app_registration,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        "Type Request ",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Text("089809/890ao/90"),
-                Text("status pekerjaan")
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      color: Colors.transparent,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(right: 10),
+                          child: Icon(
+                            Icons.calendar_today,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          "start date",
+                          style: TextStyle(color: Colors.black),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                      alignment: Alignment.centerRight,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        color: Colors.transparent,
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.calendar_today,
+                            color: Colors.black,
+                          ),
+                          Text(
+                            "end date",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ],
+                      )),
+                ),
               ],
-            )),
-        Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Text("engineering pompa"),
-                Image(image: AssetImage("assets/icons/icon-atr-reschedule.png"))
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      color: Colors.transparent,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(right: 10),
+                          child: Icon(
+                            Icons.book,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Container(
+                          child: Text(
+                            "Reason ",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ],
-            )),
-        Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            child: Row(
-              children: <Widget>[
-                Icon(Icons.date_range),
-                Text("12 des 2020"),
-                Icon(Icons.person),
-                Text("1207")
-              ],
-            )),
-        Container(
-            margin: EdgeInsets.only(left: 10.0, right: 10.0),
-            child: Row(
-              children: <Widget>[Icon(Icons.home), Text("Orchard 2019")],
-            )),
+            ),
+          ],
+        )
       ],
     ),
   );
