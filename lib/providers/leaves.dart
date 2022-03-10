@@ -16,7 +16,7 @@ class Leaves with ChangeNotifier {
     notifyListeners();
   }
 
-  String urlMaster = "https://ppm.engineeringlife.id/";
+  String urlMaster = "https://ppm.engineeringlife.id/api";
   List<LeaveModel> _allLeave = [];
 
   List<LeaveModel> get allLeave => _allLeave;
@@ -115,26 +115,28 @@ class Leaves with ChangeNotifier {
   Future<void> inisialData() async {
     _allLeave = [];
     Uri url = Uri.parse(
-        '$urlMaster/leave.json?auth=$token&orderBy="userId"&equalTo="$userId"');
+        // '$urlMaster/leave.json?auth=$token&orderBy="userId"&equalTo="$userId"'
+        '$urlMaster/details');
 
     try {
       var response = await http.get(url);
-
-      print(response.statusCode);
+      var responseData = json.decode(response.body);
+      print(responseData['data']['type_ijin']);
 
       if (response.statusCode >= 300 && response.statusCode < 200) {
         throw (response.statusCode);
       } else {
         var data = json.decode(response.body) as Map<String, dynamic>;
         if (data != null) {
+          // print(data['data']);
           data.forEach(
             (key, value) {
               LeaveModel prod = LeaveModel(
                 id: key,
-                type_ijin: value["type_ijin"],
-                leave_reason: value["reason_leave"],
-                id_peminta: value["nama_peminta"],
-                start_date: value["start_date"],
+                // type_ijin: value[0]['type_ijin'],
+                // leave_reason: value[0]["reason_leave"],
+                // id_peminta: value[0]["nama_peminta"],
+                // start_date: value[0]["start_date"],
                 // createdAt:
                 //     DateFormat("yyyy-mm-dd hh:mm:ss").parse(value["createdAt"]),
                 // updatedAt:
