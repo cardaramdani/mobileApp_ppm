@@ -25,10 +25,14 @@ dependencies:
     sdk: flutter
   faker: ^1.2.0
   rflutter_alert: ^1.0.3
-  http : ^0.12.1
+  http : ^0.13.3
+  intl: ^0.17.0
+  provider: ^5.0.0
   progress_dialog : ^1.2.2
   datetime_picker_formfield : ^2.0.0
   grouped_buttons : ^1.0.4
+  shared_preferences: ^2.0.5
+  flutter_login: ^1.1.0
     
 
   # The following adds the Cupertino Icons font to your application.

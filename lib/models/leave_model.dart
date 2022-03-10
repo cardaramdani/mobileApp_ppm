@@ -1,19 +1,36 @@
 import 'package:flutter/material.dart';
 
 class LeaveModel {
-  @required
-  String type_ijin;
-  @required
-  String nama_peminta;
-  @required
-  String nama_pengganti;
-  @required
-  String reason_leave;
-  @required
-  String start_date;
-  @required
-  String to_date;
+  String id,
+      id_peminta,
+      id_pengganti,
+      id_depthead,
+      id_hrd,
+      status_staff,
+      status_depthead,
+      status_hrd,
+      type_ijin,
+      start_date,
+      end_date,
+      leave_reason,
+      reject;
+  DateTime createdAt, updatedAt;
 
-  LeaveModel(this.type_ijin, this.nama_peminta, this.nama_pengganti,
-      this.reason_leave, this.start_date, this.to_date);
+  LeaveModel({
+    this.id,
+    this.id_peminta,
+    this.id_pengganti,
+    this.id_depthead,
+    this.id_hrd,
+    this.status_staff,
+    this.status_depthead,
+    this.status_hrd,
+    this.type_ijin,
+    this.start_date,
+    this.end_date,
+    this.leave_reason,
+    this.reject,
+    this.createdAt,
+    this.updatedAt,
+  });
 }
