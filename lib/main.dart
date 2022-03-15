@@ -64,10 +64,10 @@ import './providers/products.dart';
 import './providers/auth.dart';
 import './providers/leaves.dart';
 
-import './pages/home_page.dart';
+// import './pages/home_page.dart';
 import './pages/auth_page.dart';
-import './pages/add_product_page.dart';
-import './pages/edit_product_page.dart';
+// import './pages/add_product_page.dart';
+// import './pages/edit_product_page.dart';
 import './views/dashboard/dashboard.dart';
 
 void main() {
@@ -83,11 +83,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => Auth(),
         ),
-        // ChangeNotifierProxyProvider<Auth, Products>(
-        //   create: (context) => Products(),
-        //   update: (context, auth, products) =>
-        //       products..updateData(auth.token, auth.userId),
-        // ),
+        ChangeNotifierProxyProvider<Auth, Products>(
+          create: (context) => Products(),
+          update: (context, auth, products) =>
+              products..updateData(auth.token, auth.userId),
+        ),
         ChangeNotifierProxyProvider<Auth, Leaves>(
           create: (context) => Leaves(),
           update: (context, auth, leaves) =>
@@ -97,7 +97,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => Consumer<Auth>(
         builder: (context, auth, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: auth.isAuth ? Dashboard() : LoginPage(),
+          home: auth.isAuth ? Dashboard() : Dashboard(),
           routes: {
             // AddProductPage.route: (ctx) => AddProductPage(),
             // EditProductPage.route: (ctx) => EditProductPage(),

@@ -15,7 +15,7 @@ class Products with ChangeNotifier {
     notifyListeners();
   }
 
-  String urlMaster = "https://auth-project-afce6-default-rtdb.firebaseio.com/";
+  String urlMaster = "https://ppm.engineeringlife.id/api";
   List<Product> _allProduct = [];
 
   List<Product> get allProduct => _allProduct;
@@ -104,13 +104,15 @@ class Products with ChangeNotifier {
 
   Future<void> inisialData() async {
     _allProduct = [];
-    Uri url = Uri.parse(
-        '$urlMaster/products.json?auth=$token&orderBy="userId"&equalTo="$userId"');
+    Uri url = Uri.parse("$urlMaster/details");
 
     try {
-      var response = await http.get(url);
+      var response = await http.get(
+        url,
+        headers: {'Authorization': 'Bearer $token'},
+      );
 
-      print(response.statusCode);
+      // print(response.statusCode);
 
       if (response.statusCode >= 300 && response.statusCode < 200) {
         throw (response.statusCode);
@@ -122,7 +124,7 @@ class Products with ChangeNotifier {
               Product prod = Product(
                 id: key,
                 title: value["title"],
-                price: value["price"],
+                price: value["reason_leave"],
                 createdAt:
                     DateFormat("yyyy-mm-dd hh:mm:ss").parse(value["createdAt"]),
                 updatedAt:

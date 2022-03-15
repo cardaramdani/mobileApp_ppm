@@ -152,98 +152,73 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
       ),
-      body: Stack(
-        //backgroung
-        //listview
-        //button di tengah bawah
-        children: <Widget>[
-          Container(
-            decoration: BoxDecoration(),
-          ),
-          ListView(
-            padding: EdgeInsets.all(20),
-            children: <Widget>[
-              Text(
-                "Hii, Nama staf PPM",
-                style: TextStyle(color: Colors.black, fontSize: 20),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, 'leave/add');
-                },
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      color: Colors.greenAccent,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "Create New Request",
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Icon(
-                        Icons.arrow_forward,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                "Inquery Assigned To You ",
-                style: TextStyle(color: Colors.black, fontSize: 20),
-              ),
-              //ini list request dari orang
-              (isLoading)
+      body: // TextButton(
+          //   onPressed: () {
+          //     Navigator.pushReplacementNamed(context, 'leave/add');
+          //   },
+          //   child: Container(
+          //     padding: EdgeInsets.all(10),
+          //     decoration: BoxDecoration(
+          //         color: Colors.greenAccent,
+          //         borderRadius: BorderRadius.circular(5)),
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //       children: <Widget>[
+          //         Text(
+          //           "Create New Request",
+          //           style: TextStyle(
+          //             fontSize: 20,
+          //             color: Colors.black,
+          //           ),
+          //         ),
+          //         Icon(
+          //           Icons.arrow_forward,
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // ),
+
+          //ini list request dari orang
+          (isLoading)
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : (prov.allLeave.length == 0)
                   ? Center(
-                      child: CircularProgressIndicator(),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 90,
+                          ),
+                          Text(
+                            "No Request",
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
+                      ),
                     )
-                  : (prov.allLeave.length == 0)
-                      ? Center(
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 90,
-                              ),
-                              Text(
-                                "No Request",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      : ListView.builder(
-                          itemCount: prov.allLeave.length,
-                          itemBuilder: (context, i) => LeaveRequest(
-                            prov.allLeave[i].id,
-                            prov.allLeave[i].id_peminta,
-                            prov.allLeave[i].id_pengganti,
-                            prov.allLeave[i].id_depthead,
-                            prov.allLeave[i].id_hrd,
-                            prov.allLeave[i].status_staff,
-                            prov.allLeave[i].status_depthead,
-                            prov.allLeave[i].status_hrd,
-                            prov.allLeave[i].type_ijin,
-                            prov.allLeave[i].start_date,
-                            prov.allLeave[i].end_date,
-                            prov.allLeave[i].leave_reason,
-                            prov.allLeave[i].reject,
-                            prov.allLeave[i].updatedAt,
-                          ),
-                        ),
-            ],
-          ),
-        ],
-      ),
+                  : ListView.builder(
+                      itemCount: prov.allLeave.length,
+                      itemBuilder: (context, i) => LeaveRequest(
+                        prov.allLeave[i].id,
+                        prov.allLeave[i].id_peminta,
+                        // prov.allLeave[i].id_pengganti,
+                        // prov.allLeave[i].id_depthead,
+                        // prov.allLeave[i].id_hrd,
+                        // prov.allLeave[i].status_staff,
+                        // prov.allLeave[i].status_depthead,
+                        // prov.allLeave[i].status_hrd,
+                        prov.allLeave[i].type_ijin,
+                        // prov.allLeave[i].start_date,
+                        // prov.allLeave[i].end_date,
+                        prov.allLeave[i].leave_reason,
+                        // prov.allLeave[i].reject,
+                        // prov.allLeave[i].updatedAt,
+                      ),
+                    ),
     );
   }
 }

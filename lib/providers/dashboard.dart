@@ -41,10 +41,10 @@ class Dashboard with ChangeNotifier {
       } else {
         LeaveModel data = LeaveModel(
           type_ijin: json.decode(response.body)['type_ijin'].toString(),
-          id_peminta: nama_peminta,
+          // id_peminta: nama_peminta,
           leave_reason: reason_leave,
-          start_date: start_date,
-          end_date: to_date,
+          // start_date: start_date,
+          // end_date: to_date,
         );
 
         _allRequest.add(data);
@@ -78,8 +78,8 @@ class Dashboard with ChangeNotifier {
         LeaveModel edit = _allRequest.firstWhere((element) => element.id == id);
         edit.type_ijin = type_ijin;
         edit.leave_reason = reason_leave;
-        edit.start_date = start_date;
-        edit.end_date = to_date;
+        // edit.start_date = start_date;
+        // edit.end_date = to_date;
         notifyListeners();
       }
     } catch (err) {
@@ -127,11 +127,11 @@ class Dashboard with ChangeNotifier {
           data.forEach(
             (key, value) {
               LeaveModel prod = LeaveModel(
-                id: key,
+                id: value,
                 type_ijin: value["type_ijin"],
                 leave_reason: value["reason_leave"],
-                id_peminta: value["nama_peminta"],
-                start_date: value["start_date"],
+                // id_peminta: value["nama_peminta"],
+                // start_date: value["start_date"],
                 // createdAt:
                 //     DateFormat("yyyy-mm-dd hh:mm:ss").parse(value["createdAt"]),
                 // updatedAt:
