@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobileApp_ppm/views/dashboard/dashboard.dart';
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+// import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 
 class FormRequest extends StatefulWidget {
   const FormRequest({Key key}) : super(key: key);
@@ -102,19 +102,6 @@ class _FormRequestState extends State<FormRequest> {
                         color: Colors.black,
                       ),
                     ),
-                    Expanded(
-                      child: DateTimeField(
-                        decoration: InputDecoration(labelText: "startdate"),
-                        format: formattanggal,
-                        onShowPicker: (context, currentValue) {
-                          return showDatePicker(
-                              context: context,
-                              firstDate: DateTime(1900),
-                              initialDate: currentValue ?? DateTime.now(),
-                              lastDate: DateTime(2100));
-                        },
-                      ),
-                    )
                   ],
                 ),
               ),

@@ -191,6 +191,8 @@ class _SigninPageState extends State<SigninPage> {
   }
 
   Future _doLogin() async {
+    Uri url = Uri.parse("https://ppm.engineeringlife.id/api/login");
+
     if (txtEmail.text.isEmpty || txtPassword.text.isEmpty) {
       Alert(
               context: context,
@@ -201,8 +203,7 @@ class _SigninPageState extends State<SigninPage> {
       ProgressDialog progressDialog = ProgressDialog(context);
       progressDialog.style(message: "Loading...");
       progressDialog.show();
-      final response = await http.post(
-          'https://ppm.engineeringlife.id/api/login',
+      final response = await http.post(url,
           body: {'email': txtEmail.text, 'password': txtPassword.text},
           headers: {'Accept': 'application/json'});
       progressDialog.hide();

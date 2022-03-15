@@ -1,19 +1,79 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+
+List<LeaveModel> LeaveModelFromJson(String str) =>
+    List<LeaveModel>.from(json.decode(str).map((x) => LeaveModel.fromJson(x)));
+
+String LeaveModelToJson(List<LeaveModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class LeaveModel {
-  @required
-  String type_ijin;
-  @required
-  String nama_peminta;
-  @required
-  String nama_pengganti;
-  @required
-  String reason_leave;
-  @required
-  String start_date;
-  @required
-  String to_date;
+  LeaveModel({
+    this.id_peminta,
+    this.id,
+    this.type_ijin,
+    this.leave_reason,
+  });
 
-  LeaveModel(this.type_ijin, this.nama_peminta, this.nama_pengganti,
-      this.reason_leave, this.start_date, this.to_date);
+  String id_peminta;
+  int id;
+  String type_ijin;
+  String leave_reason;
+
+  factory LeaveModel.fromJson(Map<String, dynamic> json) => LeaveModel(
+        id_peminta: json["peminta"]["name"],
+        id: json["id"],
+        type_ijin: json["type_ijin"],
+        leave_reason: json["leave_reason"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id_peminta": id_peminta,
+        "id": id,
+        "type_ijin": type_ijin,
+        "leave_reason": leave_reason,
+      };
 }
+
+
+
+// class LeaveModel {
+//   // final int id_peminta,
+//   //     id_pengganti,
+//   //     id_depthead,
+//   //     id_hrd,
+//   //     status_staff,
+//   //     status_depthead,
+//   //     status_hrd;
+//   int id, id_peminta;
+//   String type_ijin, leave_reason;
+//   // DateTime createdAt, updatedAt;
+
+//   LeaveModel({
+//     this.id,
+//     this.id_peminta,
+//     // this.id_pengganti,
+//     // this.id_depthead,
+//     // this.id_hrd,
+//     // this.status_staff,
+//     // this.status_depthead,
+//     // this.status_hrd,
+//     this.type_ijin,
+//     // this.start_date,
+//     // this.end_date,
+//     this.leave_reason,
+//     // this.reject,
+//     // this.createdAt,
+//     // this.updatedAt,
+//   });
+//   // @override
+//   // String toString() {
+//   //   return 'LeaveModel{id_peminta: $id_peminta, id_pengganti: $id_pengganti}';
+//   // }
+
+//   // factory LeaveModel.fromJson(Map<String, dynamic> json) {
+//   //   return LeaveModel(
+//   //       id_peminta: json["id_peminta"], id_pengganti: json["id_pengganti"]);
+//   // }
+
+// }
