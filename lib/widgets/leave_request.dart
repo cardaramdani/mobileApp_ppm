@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/leaves.dart';
+import '../constans.dart';
 // import '../pages/edit_product_page.dart';
 
 class LeaveRequest extends StatelessWidget {
@@ -39,28 +40,202 @@ class LeaveRequest extends StatelessWidget {
   Widget build(BuildContext context) {
     var prov = Provider.of<Leaves>(context, listen: false);
     // String date = DateFormat.yMMMd().add_Hms().format(updatedAt);
-    return ListTile(
-      onTap: () {
-        //ini edit product
-        // Navigator.pushNamed(context, EditProductPage.route, arguments: id);
-      },
-      leading: CircleAvatar(
-        child: Padding(
-          padding: const EdgeInsets.all(5),
-          child: FittedBox(
-            child: Text("$id_peminta"),
+    return Card(
+      elevation: 2,
+      color: colorContainer,
+      child: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Flexible(
+                flex: 1,
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: Colors.transparent,
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        child: Icon(
+                          Icons.person,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Container(
+                        child: Text(
+                          "$id_peminta ",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
-      ),
-      title: Text("$type_ijin"),
-      subtitle: Text("Reason to leave : $leave_reason"),
-      trailing: IconButton(
-        icon: Icon(Icons.delete),
-        onPressed: () {
-          //harusny variabel id
-          // prov.deleteProduct("1");
-        },
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Flexible(
+                flex: 1,
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: Colors.transparent,
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(right: 10),
+                        child: Icon(
+                          Icons.app_registration,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Container(
+                        child: Text(
+                          "Type Request ",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        color: Colors.transparent,
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(right: 10),
+                            child: Icon(
+                              Icons.calendar_today,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            "start date",
+                            style: TextStyle(color: Colors.black),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                        alignment: Alignment.centerRight,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: Colors.transparent,
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.calendar_today,
+                              color: Colors.black,
+                            ),
+                            Text(
+                              "end date",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        )),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        color: Colors.transparent,
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(right: 10),
+                            child: Icon(
+                              Icons.book,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Container(
+                            child: Text(
+                              "Reason ",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(Icons.check),
+                    Icon(Icons.cancel),
+                  ],
+                ),
+              )
+            ],
+          )
+        ],
       ),
     );
+
+    // ListTile(
+    //   onTap: () {
+    //     //ini edit product
+    //     // Navigator.pushNamed(context, EditProductPage.route, arguments: id);
+    //   },
+    //   leading: CircleAvatar(
+    //     child: Padding(
+    //       padding: const EdgeInsets.all(5),
+    //       child: FittedBox(
+    //         child: Text("$id_peminta"),
+    //       ),
+    //     ),
+    //   ),
+    //   title: Text("$type_ijin"),
+    //   subtitle: Text("Reason to leave : $leave_reason"),
+    //   trailing: IconButton(
+    //     icon: Icon(Icons.delete),
+    //     onPressed: () {
+    //       //harusny variabel id
+    //       // prov.deleteProduct("1");
+    //     },
+    //   ),
+    // );
   }
 }
