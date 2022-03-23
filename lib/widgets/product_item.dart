@@ -18,7 +18,7 @@ class ProductItem extends StatelessWidget {
     String date = DateFormat.yMMMd().add_Hms().format(updatedAt);
     return ListTile(
       onTap: () {
-        Navigator.pushNamed(context, EditProductPage.route, arguments: id);
+        // Navigator.pushNamed(context, EditProductPage.route, arguments: id);
       },
       leading: CircleAvatar(
         child: Padding(

@@ -7,13 +7,15 @@ import '../constans.dart';
 import '../pages/edit_product_page.dart';
 
 class LeaveRequest extends StatelessWidget {
-  String id_peminta;
-  //     id_pengganti,
-  //     id_depthead,
-  //     id_hrd,
-  //     status_staff,
-  //     status_depthead,
-  //     status_hrd;
+  String id_peminta,
+      //     id_pengganti,
+      //     id_depthead,
+      //     id_hrd,
+      //     status_staff,
+      //     status_depthead,
+      //     status_hrd;
+      start_date,
+      end_date;
   int id;
   String type_ijin, leave_reason;
 
@@ -29,8 +31,8 @@ class LeaveRequest extends StatelessWidget {
     // this.status_depthead,
     // this.status_hrd,
     this.type_ijin,
-    // this.start_date,
-    // this.end_date,
+    this.start_date,
+    this.end_date,
     this.leave_reason,
     // this.reject,
     // this.updatedAt,
@@ -111,7 +113,7 @@ class LeaveRequest extends StatelessWidget {
                         ),
                         Container(
                           child: Text(
-                            "Type Request ",
+                            "$type_ijin ",
                             style: TextStyle(color: Colors.black),
                           ),
                         )
@@ -145,7 +147,7 @@ class LeaveRequest extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "start date",
+                              "$start_date",
                               style: TextStyle(color: Colors.black),
                             )
                           ],
@@ -168,7 +170,7 @@ class LeaveRequest extends StatelessWidget {
                                 color: Colors.black,
                               ),
                               Text(
-                                "end date",
+                                "$end_date",
                                 style: TextStyle(color: Colors.black),
                               ),
                             ],
@@ -199,7 +201,7 @@ class LeaveRequest extends StatelessWidget {
                             ),
                             Container(
                               child: Text(
-                                "Reason ",
+                                "$leave_reason ",
                                 style: TextStyle(color: Colors.black),
                               ),
                             )

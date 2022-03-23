@@ -180,7 +180,7 @@ class _DashboardState extends State<Dashboard> {
           //   ),
           // ),
 
-          //ini list request dari orang
+          // ini list request dari orang
           (isLoading)
               ? Center(
                   child: CircularProgressIndicator(),
@@ -213,8 +213,8 @@ class _DashboardState extends State<Dashboard> {
                         // prov.allLeave[i].status_depthead,
                         // prov.allLeave[i].status_hrd,
                         prov.allLeave[i].type_ijin,
-                        // prov.allLeave[i].start_date,
-                        // prov.allLeave[i].end_date,
+                        prov.allLeave[i].start_date,
+                        prov.allLeave[i].end_date,
                         prov.allLeave[i].leave_reason,
                         // prov.allLeave[i].reject,
                         // prov.allLeave[i].updatedAt,
