@@ -147,8 +147,8 @@ class Leaves with ChangeNotifier {
           var rawData = await response.stream.bytesToString();
           List<dynamic> data = jsonDecode(rawData)["data"];
           data.forEach((element) {
-            print("ini");
-            print(element["peminta"]["name"]);
+            // print("ini");
+            // print(element["peminta"]["name"]);
             LeaveModel prod = LeaveModel.fromJson(element);
             // LeaveModel model = LeaveModel.fromJson(element);
             _allLeave.add(prod);

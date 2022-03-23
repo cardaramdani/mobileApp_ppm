@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/leaves.dart';
 import '../constans.dart';
-// import '../pages/edit_product_page.dart';
+import '../pages/edit_product_page.dart';
 
 class LeaveRequest extends StatelessWidget {
   String id_peminta;
@@ -40,112 +40,96 @@ class LeaveRequest extends StatelessWidget {
   Widget build(BuildContext context) {
     var prov = Provider.of<Leaves>(context, listen: false);
     // String date = DateFormat.yMMMd().add_Hms().format(updatedAt);
-    return Card(
-      elevation: 2,
-      color: colorContainer,
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Flexible(
-                flex: 1,
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    color: Colors.transparent,
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(right: 10),
-                        child: Icon(
-                          Icons.person,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Container(
-                        child: Text(
-                          "$id_peminta ",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Flexible(
-                flex: 1,
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    color: Colors.transparent,
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(right: 10),
-                        child: Icon(
-                          Icons.app_registration,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Container(
-                        child: Text(
-                          "Type Request ",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Flexible(
-                    flex: 1,
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        color: Colors.transparent,
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.only(right: 10),
-                            child: Icon(
-                              Icons.calendar_today,
-                              color: Colors.black,
-                            ),
+    return TextButton(
+      onPressed: () {
+        //ini maih testing msih error
+        // Navigator.pushReplacementNamed(context, 'leave/add');
+
+        Navigator.pushNamed(context, EditProductPage.route, arguments: id);
+        print(id);
+        print("ini");
+      },
+      child: Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            color: Colors.red[200], borderRadius: BorderRadius.circular(5)),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      color: Colors.transparent,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(right: 10),
+                          child: Icon(
+                            Icons.person,
+                            color: Colors.black,
                           ),
-                          Text(
-                            "start date",
+                        ),
+                        Container(
+                          child: Text(
+                            "$id_peminta ",
                             style: TextStyle(color: Colors.black),
-                          )
-                        ],
-                      ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
-                  Flexible(
-                    flex: 1,
-                    child: Container(
-                        alignment: Alignment.centerRight,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      color: Colors.transparent,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.only(right: 10),
+                          child: Icon(
+                            Icons.app_registration,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Container(
+                          child: Text(
+                            "Type Request ",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Flexible(
+                      flex: 1,
+                      child: Container(
+                        alignment: Alignment.center,
                         height: 30,
                         decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
@@ -153,64 +137,91 @@ class LeaveRequest extends StatelessWidget {
                         ),
                         child: Row(
                           children: <Widget>[
-                            Icon(
-                              Icons.calendar_today,
-                              color: Colors.black,
+                            Container(
+                              margin: EdgeInsets.only(right: 10),
+                              child: Icon(
+                                Icons.calendar_today,
+                                color: Colors.black,
+                              ),
                             ),
                             Text(
-                              "end date",
+                              "start date",
                               style: TextStyle(color: Colors.black),
-                            ),
+                            )
                           ],
-                        )),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Flexible(
-                    flex: 1,
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        color: Colors.transparent,
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.only(right: 10),
-                            child: Icon(
-                              Icons.book,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Container(
-                            child: Text(
-                              "Reason ",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(Icons.check),
-                    Icon(Icons.cancel),
+                    Flexible(
+                      flex: 1,
+                      child: Container(
+                          alignment: Alignment.centerRight,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            color: Colors.transparent,
+                          ),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.calendar_today,
+                                color: Colors.black,
+                              ),
+                              Text(
+                                "end date",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ],
+                          )),
+                    ),
                   ],
                 ),
-              )
-            ],
-          )
-        ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Flexible(
+                      flex: 1,
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: Colors.transparent,
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(right: 10),
+                              child: Icon(
+                                Icons.book,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "Reason ",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // Container(
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //     children: [
+                //       Icon(Icons.check),
+                //       Icon(Icons.cancel),
+                //     ],
+                //   ),
+                // )
+              ],
+            )
+          ],
+        ),
       ),
     );
 

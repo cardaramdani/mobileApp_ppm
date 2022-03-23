@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
+//ini model untuk leave
 List<LeaveModel> LeaveModelFromJson(String str) =>
     List<LeaveModel>.from(json.decode(str).map((x) => LeaveModel.fromJson(x)));
 
