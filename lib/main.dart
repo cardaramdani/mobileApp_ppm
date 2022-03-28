@@ -58,6 +58,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:mobileApp_ppm/views/request_form/add_leave.dart';
 import 'package:provider/provider.dart';
 
 import './providers/products.dart';
@@ -97,10 +98,11 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => Consumer<Auth>(
         builder: (context, auth, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: auth.isAuth ? Dashboard() : Dashboard(),
+          home: auth.isAuth ? Dashboard() : LoginPage(),
           routes: {
             //definisikan rute dsni utuk pemanggilan rute
             // AddProductPage.route: (ctx) => AddProductPage(),
+            AddLeave.route: (ctx) => AddLeave(),
             EditProductPage.route: (ctx) => EditProductPage(),
           },
         ),

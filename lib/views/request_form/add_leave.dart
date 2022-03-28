@@ -1,21 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mobileApp_ppm/views/dashboard/dashboard.dart';
-// import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:provider/provider.dart';
 
-class FormRequest extends StatefulWidget {
-  const FormRequest({Key key}) : super(key: key);
-  static const route = "/add-product";
+import '../../providers/leaves.dart';
+import '../../views/dashboard/dashboard.dart';
 
-  @override
-  _FormRequestState createState() => _FormRequestState();
-}
+class AddLeave extends StatelessWidget {
+  static const route = "/add-leave";
 
-class _FormRequestState extends State<FormRequest> {
+  final TextEditingController typeijinController = TextEditingController();
+  final TextEditingController namapemintaController = TextEditingController();
+  final TextEditingController reasonleaveController = TextEditingController();
+  final TextEditingController startdateController = TextEditingController();
+  final TextEditingController todateController = TextEditingController();
+  final formattanggal = DateFormat("yyyy-MM-dd");
+
   @override
   Widget build(BuildContext context) {
-    final formattanggal = DateFormat("yyyy-MM-dd");
     final mediaQueryheight = MediaQuery.of(context).size.height;
+    void save(String type_ijin, String nama_peminta, String reason_leave,
+        String start_date, String to_date) {
+      try {
+        Provider.of<Leaves>(context, listen: false)
+            .addLeave(
+                type_ijin, nama_peminta, reason_leave, start_date, to_date)
+            .then((value) => Navigator.pop(context));
+      } catch (err) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("Error Occured"),
+              content: Text("Error : $err"),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text("OKAY"),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    }
 
     return Scaffold(
         body: Stack(
@@ -54,11 +81,15 @@ class _FormRequestState extends State<FormRequest> {
                     ),
                     Expanded(
                       child: TextField(
-                        style: TextStyle(color: Colors.black),
+                        autocorrect: false,
+                        autofocus: true,
+                        controller: typeijinController,
+                        textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                          hintStyle: TextStyle(color: Colors.black),
-                          hintText: "type ijin",
-                          focusColor: Colors.red,
+                          labelText: "Type ijin",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
                         ),
                       ),
                     )
@@ -74,17 +105,79 @@ class _FormRequestState extends State<FormRequest> {
                     Padding(
                       padding: const EdgeInsets.only(right: 16),
                       child: Icon(
+                        Icons.calendar_today,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Expanded(
+                      child: TextField(
+                        autocorrect: false,
+                        autofocus: true,
+                        controller: typeijinController,
+                        textInputAction: TextInputAction.next,
+                        decoration: InputDecoration(
+                          labelText: "Start Date",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: Icon(
+                        Icons.calendar_today,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Expanded(
+                      child: TextField(
+                        autocorrect: false,
+                        autofocus: true,
+                        controller: typeijinController,
+                        textInputAction: TextInputAction.next,
+                        decoration: InputDecoration(
+                          labelText: "End Date",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: Icon(
                         Icons.person,
                         color: Colors.black,
                       ),
                     ),
                     Expanded(
                       child: TextField(
-                        style: TextStyle(color: Colors.black),
+                        autocorrect: false,
+                        autofocus: true,
+                        controller: typeijinController,
+                        textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                          hintStyle: TextStyle(color: Colors.black),
-                          hintText: "Nama pengganti",
-                          focusColor: Colors.red,
+                          labelText: "Subsitute Name",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
                         ),
                       ),
                     )
@@ -92,65 +185,28 @@ class _FormRequestState extends State<FormRequest> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(right: 16),
                       child: Icon(
-                        Icons.calendar_today,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16),
-                      child: Icon(
-                        Icons.calendar_today,
+                        Icons.list,
                         color: Colors.black,
                       ),
                     ),
                     Expanded(
                       child: TextField(
-                        style: TextStyle(color: Colors.black),
+                        autocorrect: false,
+                        autofocus: true,
+                        controller: typeijinController,
+                        textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                          hintStyle: TextStyle(color: Colors.black),
-                          hintText: "end date",
-                          focusColor: Colors.red,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16),
-                      child: Icon(
-                        Icons.note_add,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Expanded(
-                      child: TextField(
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                          hintStyle: TextStyle(color: Colors.black),
-                          hintText: "Reason",
-                          focusColor: Colors.red,
+                          labelText: "Leave Reason",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
                         ),
                       ),
                     )

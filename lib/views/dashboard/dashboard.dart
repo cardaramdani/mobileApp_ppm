@@ -9,6 +9,7 @@ import '/providers/auth.dart';
 import '/providers/leaves.dart';
 
 import '/widgets/leave_request.dart';
+import '/views/request_form/add_leave.dart';
 
 import 'package:mobileApp_ppm/views/auth/setting.dart';
 import 'package:mobileApp_ppm/views/request_form/create_form_leave.dart';
@@ -153,32 +154,6 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
       body:
-          // TextButton(
-          //   onPressed: () {
-          //     Navigator.pushReplacementNamed(context, 'leave/add');
-          //   },
-          //   child: Container(
-          //     padding: EdgeInsets.all(10),
-          //     decoration: BoxDecoration(
-          //         color: Colors.greenAccent,
-          //         borderRadius: BorderRadius.circular(5)),
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //       children: <Widget>[
-          //         Text(
-          //           "Create New Request",
-          //           style: TextStyle(
-          //             fontSize: 20,
-          //             color: Colors.black,
-          //           ),
-          //         ),
-          //         Icon(
-          //           Icons.arrow_forward,
-          //         )
-          //       ],
-          //     ),
-          //   ),
-          // ),
 
           // ini list request dari orang
           (isLoading)
@@ -188,37 +163,164 @@ class _DashboardState extends State<Dashboard> {
               : (prov.allLeave.length == 0)
                   ? Center(
                       child: Column(
-                        children: [
-                          SizedBox(
-                            height: 90,
-                          ),
-                          Text(
-                            "No Request",
-                            style: TextStyle(
-                              fontSize: 20,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(height: 20),
+                            Text(
+                              "Hi, Nama user",
+                              style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.black,
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              "Below are your ",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              "Request from other staff",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, AddLeave.route);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                color: Colors.greenAccent,
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  "Create New Request",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward,
+                                )
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    )
-                  : ListView.builder(
-                      itemCount: prov.allLeave.length,
-                      itemBuilder: (context, i) => LeaveRequest(
-                        prov.allLeave[i].id,
-                        prov.allLeave[i].id_peminta,
-                        // prov.allLeave[i].id_pengganti,
-                        // prov.allLeave[i].id_depthead,
-                        // prov.allLeave[i].id_hrd,
-                        // prov.allLeave[i].status_staff,
-                        // prov.allLeave[i].status_depthead,
-                        // prov.allLeave[i].status_hrd,
-                        prov.allLeave[i].type_ijin,
-                        prov.allLeave[i].start_date,
-                        prov.allLeave[i].end_date,
-                        prov.allLeave[i].leave_reason,
-                        // prov.allLeave[i].reject,
-                        // prov.allLeave[i].updatedAt,
-                      ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Expanded(
+                            child: Text(
+                          "No Request for you",
+                          style: TextStyle(fontSize: 20),
+                        ))
+                      ],
+                    ))
+                  : Column(
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(height: 20),
+                            Text(
+                              "Hi, Nama user",
+                              style: TextStyle(
+                                fontSize: 25,
+                                color: Colors.black,
+                              ),
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              "Below are your ",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              "Request from other staff",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                                context, 'leave/add');
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                color: Colors.greenAccent,
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  "Create New Request",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Request for you",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: prov.allLeave.length,
+                            itemBuilder: (context, i) => LeaveRequest(
+                              prov.allLeave[i].id,
+                              prov.allLeave[i].id_peminta,
+                              // prov.allLeave[i].id_pengganti,
+                              // prov.allLeave[i].id_depthead,
+                              // prov.allLeave[i].id_hrd,
+                              // prov.allLeave[i].status_staff,
+                              // prov.allLeave[i].status_depthead,
+                              // prov.allLeave[i].status_hrd,
+                              prov.allLeave[i].type_ijin,
+                              prov.allLeave[i].start_date,
+                              prov.allLeave[i].end_date,
+                              prov.allLeave[i].leave_reason,
+                              // prov.allLeave[i].reject,
+                              // prov.allLeave[i].updatedAt,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
     );
   }
