@@ -35,29 +35,35 @@ class Leaves with ChangeNotifier {
   List<LeaveModel> get allLeave => _allLeave;
 
 // class untuk add request
-  Future<void> addLeave(String type_ijin, String nama_peminta,
+  Future<void> addLeave(String type_ijin, String nama_pengganti,
       String reason_leave, String start_date, String to_date) async {
     Uri url = Uri.parse("$urlMaster/leave/add");
+
     // Uri url = Uri.parse("$urlMaster/leave/add?auth=$token");
     // DateTime dateNow = DateTime.now();
     try {
       var response = await http.post(url, body: {
+        'id': userId,
         'type_ijin': type_ijin,
-        'nama_peminta': nama_peminta,
-        'reason_leave': reason_leave,
+        'id_pengganti': nama_pengganti,
+        'leave_reason': reason_leave,
         'start_date': start_date,
-        'to_date': to_date
+        'end_date': to_date
       }, headers: {
         'Authorization': 'Bearer $token'
       }
           // headers: {'Accept': 'application/json'},
           );
+      var responseData = json.decode(response.body);
 
-      if (response.statusCode > 300 || response.statusCode < 200) {
+      if (response.statusCode >= 300 && response.statusCode < 200) {
         throw (response.statusCode);
       } else {
+        // print("ini dia");
+        // print(json.decode(response.body)['data']['type_ijin']);
+        // print(response.body);
         LeaveModel data = LeaveModel(
-          type_ijin: json.decode(response.body)['type_ijin'].toString(),
+          type_ijin: json.decode(response.body)['data']['type_ijin'],
           // id_peminta: id_peminta,
           leave_reason: reason_leave,
           start_date: start_date,

@@ -9,7 +9,7 @@ class AddLeave extends StatelessWidget {
   static const route = "/add-leave";
 
   final TextEditingController typeijinController = TextEditingController();
-  final TextEditingController namapemintaController = TextEditingController();
+  final TextEditingController namapenggantiController = TextEditingController();
   final TextEditingController reasonleaveController = TextEditingController();
   final TextEditingController startdateController = TextEditingController();
   final TextEditingController todateController = TextEditingController();
@@ -18,12 +18,12 @@ class AddLeave extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQueryheight = MediaQuery.of(context).size.height;
-    void save(String type_ijin, String nama_peminta, String reason_leave,
+    void save(String type_ijin, String nama_pengganti, String reason_leave,
         String start_date, String to_date) {
       try {
         Provider.of<Leaves>(context, listen: false)
             .addLeave(
-                type_ijin, nama_peminta, reason_leave, start_date, to_date)
+                type_ijin, nama_pengganti, reason_leave, start_date, to_date)
             .then((value) => Navigator.pop(context));
       } catch (err) {
         showDialog(
@@ -82,7 +82,6 @@ class AddLeave extends StatelessWidget {
                     Expanded(
                       child: TextField(
                         autocorrect: false,
-                        autofocus: true,
                         controller: typeijinController,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
@@ -112,8 +111,7 @@ class AddLeave extends StatelessWidget {
                     Expanded(
                       child: TextField(
                         autocorrect: false,
-                        autofocus: true,
-                        controller: typeijinController,
+                        controller: startdateController,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           labelText: "Start Date",
@@ -141,8 +139,7 @@ class AddLeave extends StatelessWidget {
                     Expanded(
                       child: TextField(
                         autocorrect: false,
-                        autofocus: true,
-                        controller: typeijinController,
+                        controller: todateController,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           labelText: "End Date",
@@ -170,8 +167,7 @@ class AddLeave extends StatelessWidget {
                     Expanded(
                       child: TextField(
                         autocorrect: false,
-                        autofocus: true,
-                        controller: typeijinController,
+                        controller: namapenggantiController,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           labelText: "Subsitute Name",
@@ -199,8 +195,7 @@ class AddLeave extends StatelessWidget {
                     Expanded(
                       child: TextField(
                         autocorrect: false,
-                        autofocus: true,
-                        controller: typeijinController,
+                        controller: reasonleaveController,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           labelText: "Leave Reason",
@@ -217,37 +212,53 @@ class AddLeave extends StatelessWidget {
               Spacer(),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacement(context, MaterialPageRoute(
-                          builder: (context) {
-                            return Dashboard();
-                          },
-                        ));
-                      },
-                      child: Container(
-                        width: 250,
-                        height: mediaQueryheight * 0.07,
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          shape: BoxShape.rectangle,
-                          color: Colors.red,
-                        ),
-                        child: Text(
-                          "Submit",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 20),
-                        ),
+                child: Container(
+                  child: GestureDetector(
+                    onTap: () => save(
+                        typeijinController.text,
+                        namapenggantiController.text,
+                        reasonleaveController.text,
+                        startdateController.text,
+                        todateController.text),
+                    child: Container(
+                      width: 250,
+                      height: mediaQueryheight * 0.07,
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        shape: BoxShape.rectangle,
+                        color: Colors.red,
+                      ),
+                      child: Text(
+                        "Submit",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 20),
                       ),
                     ),
-                  ],
+                  ),
+                  // ElevatedButton(
+                  //   onPressed: () => save(
+                  //       typeijinController.text,
+                  //       namapenggantiController.text,
+                  //       reasonleaveController.text,
+                  //       startdateController.text,
+                  //       todateController.text),
+                  //   child: Text(
+                  //     "Submit",
+                  //     style: TextStyle(
+                  //       fontSize: 18,
+                  //     ),
+                  //   ),
+                  //   style: ElevatedButton.styleFrom(
+                  //     padding: EdgeInsets.symmetric(vertical: 15),
+                  //     shape: RoundedRectangleBorder(
+                  //       borderRadius: BorderRadius.circular(100),
+                  //     ),
+                  //   ),
+                  // ),
                 ),
               ),
               // Flexible(
