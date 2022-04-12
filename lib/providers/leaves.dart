@@ -64,13 +64,13 @@ class Leaves with ChangeNotifier {
         // print(response.body);
         LeaveModel data = LeaveModel(
           type_ijin: json.decode(response.body)['data']['type_ijin'],
-          // id_peminta: id_peminta,
-          leave_reason: reason_leave,
-          start_date: start_date,
-          end_date: to_date,
+          id_peminta: json.decode(response.body)['data']['type_ijin'],
+          leave_reason: json.decode(response.body)['data']['type_ijin'],
+          start_date: json.decode(response.body)['data']['type_ijin'],
+          end_date: json.decode(response.body)['data']['type_ijin'],
         );
 
-        // _allLeave.add(data);
+        _allLeave.add(data);
         notifyListeners();
       }
     } catch (err) {
