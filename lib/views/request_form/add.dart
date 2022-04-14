@@ -4,9 +4,11 @@ import 'package:provider/provider.dart';
 
 import '../../providers/leaves.dart';
 import '../../views/dashboard/dashboard.dart';
+import '../../widgets/time_picker_widget.dart';
+import '../../widgets/date_picker_widget.dart';
 
 class AddLeaves extends StatefulWidget {
-  static const route = "/add-leaves";
+  static const route = "/add-saja";
   AddLeaves({Key key}) : super(key: key);
 
   @override
@@ -90,7 +92,7 @@ class _AddLeavesState extends State<AddLeaves> {
                         controller: typeijinController,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                          labelText: "Type ijins",
+                          labelText: "Type ijin statfull",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
@@ -210,6 +212,30 @@ class _AddLeavesState extends State<AddLeaves> {
                         ),
                       ),
                     )
+                  ],
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: Icon(
+                        Icons.list,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Expanded(
+                        child: Row(
+                      children: [
+                        DatePickerWidget(),
+                        const SizedBox(height: 24),
+                        TimePickerWidget(),
+                      ],
+                    ))
                   ],
                 ),
               ),

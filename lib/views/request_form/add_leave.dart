@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../../providers/leaves.dart';
 import '../../views/dashboard/dashboard.dart';
+import '../../widgets/time_picker_widget.dart';
+import '../../widgets/date_picker_widget.dart';
 
 class AddLeave extends StatelessWidget {
   static const route = "/add-leave";
@@ -85,7 +87,7 @@ class AddLeave extends StatelessWidget {
                         controller: typeijinController,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                          labelText: "Type ijin",
+                          labelText: "Type ijin stateless",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
@@ -209,6 +211,27 @@ class AddLeave extends StatelessWidget {
                 ),
               ),
 
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: Icon(
+                        Icons.list,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Expanded(
+                      child: DatePickerWidget(),
+                    ),
+                    Expanded(
+                      child: TimePickerWidget(),
+                    ),
+                  ],
+                ),
+              ),
               Spacer(),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
