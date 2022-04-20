@@ -58,8 +58,8 @@
 // }
 
 import 'package:flutter/material.dart';
-// import 'package:mobileApp_ppm/views/request_form/add.dart';
-import 'package:mobileApp_ppm/views/request_form/add_leave.dart';
+import 'package:mobileApp_ppm/views/request_form/add.dart';
+// import 'package:mobileApp_ppm/views/request_form/add_leave.dart';
 import 'package:provider/provider.dart';
 
 import './providers/products.dart';
@@ -103,8 +103,8 @@ class MyApp extends StatelessWidget {
           routes: {
             //definisikan rute dsni utuk pemanggilan rute
             // AddProductPage.route: (ctx) => AddProductPage(),
-            AddLeave.route: (ctx) => AddLeave(),
-            // AddLeaves.route: (ctx) => AddLeaves(),
+            // AddLeave.route: (ctx) => AddLeave(),
+            AddLeaves.route: (ctx) => AddLeaves(),
             EditProductPage.route: (ctx) => EditProductPage(),
           },
         ),

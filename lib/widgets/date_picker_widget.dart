@@ -9,13 +9,14 @@ class DatePickerWidget extends StatefulWidget {
 }
 
 class _DatePickerWidgetState extends State<DatePickerWidget> {
-  DateTime date;
+  static DateTime startdate;
+  static DateTime todate;
 
   String getText() {
-    if (date == null) {
+    if (startdate == null) {
       return 'Select Date';
     } else {
-      return DateFormat('MM/dd/yyyy').format(date);
+      return DateFormat('MM/dd/yyyy').format(startdate);
       // return '${date.month}/${date.day}/${date.year}';
     }
   }
@@ -31,13 +32,13 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     final initialDate = DateTime.now();
     final newDate = await showDatePicker(
       context: context,
-      initialDate: date ?? initialDate,
+      initialDate: startdate ?? initialDate,
       firstDate: DateTime(DateTime.now().year - 5),
       lastDate: DateTime(DateTime.now().year + 5),
     );
 
     if (newDate == null) return;
 
-    setState(() => date = newDate);
+    setState(() => startdate = newDate);
   }
 }

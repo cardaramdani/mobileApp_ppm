@@ -258,8 +258,9 @@ class _DashboardState extends State<Dashboard> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushReplacementNamed(
-                                context, 'leave/add');
+                            Navigator.popAndPushNamed(context, '/add-saja');
+                            // Navigator.pushReplacementNamed(
+                            //     context, '/add-leave');
                           },
                           child: Container(
                             padding: EdgeInsets.all(10),

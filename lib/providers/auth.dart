@@ -6,15 +6,16 @@ import 'package:http/http.dart' as http;
 
 class Auth with ChangeNotifier {
   Timer _authTimer;
-  String _idToken, userId;
+  String _idToken, userId, username;
   DateTime _expiryDate;
 
-  String _tempidToken, tempuserId;
+  String _tempidToken, tempuserId, tempusername;
   DateTime _tempexpiryDate;
 
   void tempData() {
     _idToken = _tempidToken;
     userId = tempuserId;
+    username = tempusername;
     _expiryDate = _tempexpiryDate;
     notifyListeners();
   }
@@ -77,6 +78,10 @@ class Auth with ChangeNotifier {
       }
       _tempidToken = responseData['token'];
       tempuserId = responseData['data']['id'].toString();
+      tempusername = responseData['data']['name'] +
+          ' ' +
+          responseData['data']['last_name'];
+      print(tempusername);
       //disini harusnya timing expired dari api
       _tempexpiryDate = DateTime.now().add(
         Duration(
@@ -109,7 +114,7 @@ class Auth with ChangeNotifier {
       _authTimer.cancel();
     }
     final timeToExpiry = _tempexpiryDate.difference(DateTime.now()).inSeconds;
-    print(timeToExpiry);
+    // print(timeToExpiry);
     _authTimer = Timer(Duration(seconds: timeToExpiry), logout);
   }
 }

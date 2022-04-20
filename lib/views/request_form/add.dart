@@ -6,6 +6,7 @@ import '../../providers/leaves.dart';
 import '../../views/dashboard/dashboard.dart';
 import '../../widgets/time_picker_widget.dart';
 import '../../widgets/date_picker_widget.dart';
+import '../../widgets/datepicker.dart';
 
 class AddLeaves extends StatefulWidget {
   static const route = "/add-saja";
@@ -22,6 +23,44 @@ class _AddLeavesState extends State<AddLeaves> {
   final TextEditingController startdateController = TextEditingController();
   final TextEditingController todateController = TextEditingController();
   final formattanggal = DateFormat("yyyy-MM-dd");
+
+  String pilihTanggal, labelText;
+  final TextStyle valueStyle = TextStyle(fontSize: 16.0);
+
+  DateTime tgl_startdate = new DateTime.now();
+  DateTime tgl_enddate = new DateTime.now();
+  Future<Null> _selectedstartDate(BuildContext context) async {
+    final DateTime picked_startdate = await showDatePicker(
+        context: context,
+        initialDate: tgl_startdate,
+        firstDate: DateTime.now(),
+        lastDate: DateTime((DateTime.now().year + 1)));
+
+    if (picked_startdate != null && picked_startdate != tgl_startdate) {
+      setState(() {
+        tgl_startdate = picked_startdate;
+        startdateController.text =
+            new DateFormat('yyyy-MM-dd').format(tgl_startdate);
+      });
+    } else {}
+  }
+
+  Future<Null> _selectedendDate(BuildContext context) async {
+    final DateTime picked_enddate = await showDatePicker(
+        context: context,
+        initialDate: tgl_enddate,
+        firstDate: DateTime.now(),
+        lastDate: DateTime((DateTime.now().year + 1)));
+
+    if (picked_enddate != null && picked_enddate != tgl_enddate) {
+      setState(() {
+        tgl_enddate = picked_enddate;
+        todateController.text =
+            new DateFormat('yyyy-MM-dd').format(tgl_enddate);
+      });
+    } else {}
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaQueryheight = MediaQuery.of(context).size.height;
@@ -92,7 +131,7 @@ class _AddLeavesState extends State<AddLeaves> {
                         controller: typeijinController,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
-                          labelText: "Type ijin statfull",
+                          labelText: "Type ijin stateless",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
@@ -116,16 +155,14 @@ class _AddLeavesState extends State<AddLeaves> {
                       ),
                     ),
                     Expanded(
-                      child: TextField(
-                        autocorrect: false,
-                        controller: startdateController,
-                        textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
-                          labelText: "Start Date",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
+                      child: DateDropDown(
+                        labelText: "Start date",
+                        valueText:
+                            new DateFormat('yyyy-MM-dd').format(tgl_startdate),
+                        valueStyle: valueStyle,
+                        onPressed: () {
+                          _selectedstartDate(context);
+                        },
                       ),
                     )
                   ],
@@ -144,16 +181,14 @@ class _AddLeavesState extends State<AddLeaves> {
                       ),
                     ),
                     Expanded(
-                      child: TextField(
-                        autocorrect: false,
-                        controller: todateController,
-                        textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
-                          labelText: "End Date",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
+                      child: DateDropDown(
+                        labelText: "To date",
+                        valueText:
+                            new DateFormat('yyyy-MM-dd').format(tgl_enddate),
+                        valueStyle: valueStyle,
+                        onPressed: () {
+                          _selectedendDate(context);
+                        },
                       ),
                     )
                   ],
@@ -229,17 +264,17 @@ class _AddLeavesState extends State<AddLeaves> {
                       ),
                     ),
                     Expanded(
-                        child: Row(
-                      children: [
-                        DatePickerWidget(),
-                        const SizedBox(height: 24),
-                        TimePickerWidget(),
-                      ],
-                    ))
+                      child: DatePickerWidget(),
+                    ),
+                    Expanded(
+                      child: DatePickerWidget(),
+                    ),
+                    Expanded(
+                      child: TimePickerWidget(),
+                    ),
                   ],
                 ),
               ),
-
               Spacer(),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
