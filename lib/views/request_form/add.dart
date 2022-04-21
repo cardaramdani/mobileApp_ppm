@@ -9,7 +9,7 @@ import '../../widgets/date_picker_widget.dart';
 import '../../widgets/datepicker.dart';
 
 class AddLeaves extends StatefulWidget {
-  static const route = "/add-saja";
+  static const route = "/add/leave";
   AddLeaves({Key key}) : super(key: key);
 
   @override
@@ -71,13 +71,13 @@ class _AddLeavesState extends State<AddLeaves> {
             .addLeave(
                 type_ijin, nama_pengganti, reason_leave, start_date, to_date)
             .then((value) => Navigator.pop(context));
-      } catch (err) {
+      } catch (pesan) {
         showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
               title: Text("Error Occured"),
-              content: Text("Error : $err"),
+              content: Text("Error : $pesan"),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),

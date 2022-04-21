@@ -38,7 +38,6 @@ class Leaves with ChangeNotifier {
   Future<void> addLeave(String type_ijin, String nama_pengganti,
       String reason_leave, String start_date, String to_date) async {
     Uri url = Uri.parse("$urlMaster/leave/add");
-    print(url);
 
     // Uri url = Uri.parse("$urlMaster/leave/add?auth=$token");
     // DateTime dateNow = DateTime.now();
@@ -56,14 +55,13 @@ class Leaves with ChangeNotifier {
           // headers: {'Accept': 'application/json'},
           );
       var responseData = json.decode(response.body);
+      // print(token);
+      // print(response.statusCode);
 
-      if (response.statusCode == 401) {
-        // print("ini dia error 401");
-        throw (response.statusCode);
-      }
       if (response.statusCode >= 300 && response.statusCode < 200) {
         throw (response.statusCode);
       } else {
+        // print(json.decode(response.body)['data']['type_ijin']);
         LeaveModel data = LeaveModel(
           type_ijin: json.decode(response.body)['data']['type_ijin'],
           id_peminta: json.decode(response.body)['data']['type_ijin'],
@@ -75,8 +73,8 @@ class Leaves with ChangeNotifier {
         _allLeave.add(data);
         notifyListeners();
       }
-    } catch (err) {
-      throw (err);
+    } catch (pesan) {
+      throw (pesan);
     }
   }
 

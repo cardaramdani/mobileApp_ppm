@@ -193,7 +193,8 @@ class _DashboardState extends State<Dashboard> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, AddLeave.route);
+                            // Navigator.pushNamed(context, AddLeave.route);
+                            Navigator.popAndPushNamed(context, '/add/leave');
                           },
                           child: Container(
                             padding: EdgeInsets.all(10),
@@ -258,9 +259,9 @@ class _DashboardState extends State<Dashboard> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.popAndPushNamed(context, '/add-saja');
+                            Navigator.popAndPushNamed(context, '/add/leave');
                             // Navigator.pushReplacementNamed(
-                            //     context, '/add-leave');
+                            //     context, '/add/leave');
                           },
                           child: Container(
                             padding: EdgeInsets.all(10),
